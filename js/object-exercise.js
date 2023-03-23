@@ -56,6 +56,18 @@ let Products = [
     },
 ];
 
+
+
+const ProductForm = document.getElementById('add-product');
+
+ProductForm.addEventListener('click',() => {
+    console.dir(ProductForm.dataset)
+})
+
+const tableBody = document.querySelector('#table-body');
+var editButtons;
+
+
 // Libreria sweetALert
 // swal ({
 //     title:'Bievenido a sweetAlert',
@@ -64,7 +76,6 @@ let Products = [
 //     timer:3000 });
 
 //1- Obtener el body de la tabla para poder modificarlo desde JS
-const tableBody = document.querySelector('#table-body');
 
 
 //2- Definir una función para iterar el array
@@ -103,7 +114,7 @@ function renderizarTabla() {
                                     <i class="fa-solid fa-trash"></i>
                                  </button>
 
-                                <button class="product__action-btn btn-edit">
+                                <button class="product__action-btn btn-edit" onclick="editProduct(${index})">
                                 <i class="fa-solid fa-pencil"></i>
                                 </button>
 
@@ -114,6 +125,9 @@ function renderizarTabla() {
                             </td>
                         </tr>`
         tableBody.innerHTML += tableRow;
+        const editButtons = document.querySelectorAll('.btn-edit');
+
+        console.log(editButtons)
     });
 
 }
@@ -136,9 +150,15 @@ function addProduct(evt) {
         image: elements.image.value,
         stock: elements.stock.checked,
         joystick: elements.joystick.checked,
-        games: elements.games.value
+        games: elements.games.value,
+        category: 'Limpieza'
     };
 
+    fetch('http://localhost:3200/product', {
+        method:'POST',
+        body:newProduct
+    }). then(resp => resp.json())
+    .then(data => console.log(data))
 
     const newFormData = new FormData(evt.target);
     const newProductFormData = Object.fromEntries(newFormData);
@@ -169,7 +189,12 @@ function deleteProduct(indice) {
     renderizarTabla();
 }
 
+function editProduct(idx) {
+    let product = products[idx];
+    console.log('indice', idx);
+    console.log('product:', product);
 
+}
 
 
 // product

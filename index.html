@@ -11,20 +11,28 @@
 <body>
     <h1>Objects</h1>
     <div class="container">
-        <form id="add-product" class="product-form" onsubmit="addProduct(event)">
+        <form id="add-product" class="product-form" onsubmit="addProduct(event)"
+        data-custom="My Atributo personalizado">
             <div class="input-box">
+                
+                <input type="text" name="name" id="nameLabel" required class="question">
+                <span class="highlight"></span>
+                <span class="bar"></span>
                 <label for="nameLabel">Producto</label>
-                <input type="text" name="name" id="nameLabel" required>
             </div>
             <div class="input-box">
-                <label for="descLabel">Descripción</label>
                 <textarea name="description" id="descLabel" rows="5" required>
                 </textarea>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label for="descLabel">Descripción</label>
             </div>
     
             <div class="input-box">
-                <label for="priceLabel">Precio</label>
                 <input type="number" name="price" id="priceLabel" required>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label for="priceLabel">Precio</label>
             </div>
     
             <div class="input-box">
