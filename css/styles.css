@@ -56,11 +56,22 @@ body {
 .product__price {
     font-weight: bold;
 }
-.product__others, .product__actions {
+.product__info, .product__actions {
     vertical-align: center;
     text-align: center;
     font-size: 1.5rem;
 }
+
+.product__info {
+    font-size: 1.25rem !important;
+}
+
+.product__info-icon.disabled {
+    filter: grayscale(1);
+    opacity: .5;
+    pointer-events: none;
+}
+
 .product__action-btn {
     background-color: red;
     border: none;
