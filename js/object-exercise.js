@@ -56,6 +56,12 @@ let Products = [
     },
 ];
 
+swal ({
+    title:'Bievenido a sweetAlert',
+    text: 'Este modal o dialogo es provisto por la libreria sweetAlert',
+    icon:'info',
+    timer:3000 });
+
 //1- Obtener el body de la tabla para poder modificarlo desde JS
 const tableBody = document.querySelector('#table-body');
 
